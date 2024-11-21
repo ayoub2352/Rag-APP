@@ -1,15 +1,15 @@
 from .BaseDataModel import BaseDataModel
-from .db_schemes import Project
+from .db_schemes import Project , DataChunk
 from .enums.DataBaseEnum import DataBaseEnum
 
 class ProjectModel(BaseDataModel):
-
-    def __init__(self, db_client: object):
+    def __init__(self , db_client:object ):
         super().__init__(db_client=db_client)
         self.collection = self.db_client[DataBaseEnum.COLLECTION_PROJECT_NAME.value]
 
+    
     @classmethod
-    async def create_instance(cls, db_client: object):
+    async def create_instance(cls,db_client:object):
         instance = cls(db_client)
         await instance.init_collection()
         return instance
@@ -22,18 +22,15 @@ class ProjectModel(BaseDataModel):
             for index in indexes:
                 await self.collection.create_index(
                     index["key"],
-                    name=index["name"],
-                    unique=index["unique"]
+                    name = index["name"],
+                    unique = index["unique"]
                 )
 
-
-    async def create_project(self, project: Project):
-
-        result = await self.collection.insert_one(project.dict(by_alias=True, exclude_unset=True))
+    async def create_project(self,project:Project):
+        result = await self.collection.insert_one(project.dict(by_alias=True,exclude_unset=True))
         project.id = result.inserted_id
-
-        return project
-
+        return project 
+    
     async def get_project_or_create_one(self, project_id: str):
 
         record = await self.collection.find_one({
@@ -48,10 +45,10 @@ class ProjectModel(BaseDataModel):
             return project
         
         return Project(**record)
-
+    
     async def get_all_projects(self, page: int=1, page_size: int=10):
 
-        # count total number of documents
+        # count total number of documents   
         total_documents = await self.collection.count_documents({})
 
         # calculate total number of pages
@@ -67,3 +64,7 @@ class ProjectModel(BaseDataModel):
             )
 
         return projects, total_pages
+    
+    
+
+
