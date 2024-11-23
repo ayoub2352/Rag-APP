@@ -71,40 +71,40 @@ $ uvicorn main:app --reload --host 0.0.0.0 --port 5000
 
 Download the POSTMAN collection from [/assets/mini-rag-app.postman_collection.json](/assets/mini-rag-app.postman_collection.json)
 
-##React FrontEnd
+## React FrontEnd
 
 Download Node.js from [Node.js](https://nodejs.org/en)
 
--verify the installation
+## verify the installation
 
 ```bash
 $ node -v
 $ npm -v
 ```
 
--Use npm (comes with Node.js) to install the required frontend dependencies:
+## Use npm (comes with Node.js) to install the required frontend dependencies:
 
 ```bash
 $ npm install axios @tailwindcss/typography
 ```
 
--Install Tailwind CSS and its peer dependencies:
+## Install Tailwind CSS and its peer dependencies:
 
 ```bash
 $ npx tailwindcss init -p
 ```
 
--Ensure src/index.css contains the following lines :
+## Ensure src/index.css contains the following lines :
 ```bash
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
--and start React App : 
+## start React App : 
 
 ```bash
 $ npm start
 ```
 
--This will launch the React app, and you can access it in your browser at http://localhost:3000.
+This will launch the React app, and you can access it in your browser at http://localhost:3000.
