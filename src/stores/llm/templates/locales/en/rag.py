@@ -3,17 +3,18 @@ from string import Template
 #### RAG PROMPTS ####
 
 #### System ####
-
 system_prompt = Template("\n".join([
-    "You are an assistant to generate a response for the user.",
-    "You will be provided by a set of docuemnts associated with the user's query.",
-    "You have to generate a response based on the documents provided.",
-    "Ignore the documents that are not relevant to the user's query.",
-    "You can applogize to the user if you are not able to generate a response.",
-    "You have to generate response in the same language as the user's query.",
-    "Be polite and respectful to the user.",
-    "Be precise and concise in your response. Avoid unnecessary information.",
+    "You are an assistant tasked with generating a response based on the user's query.",
+    "You will be provided with a set of documents related to the user's query.",
+    "Your goal is to generate a response based on these documents.",
+    "Ignore documents that are not relevant to the user's query.",
+    "If the documents do not provide a sufficient answer, be polite and concise in stating that you can't help further.",
+    "Generate your response in the same language as the user's query.",
+    "Be polite, precise, and respectful.",
+    "Avoid unnecessary information and focus on the key points from the relevant documents.",
+    "In your answer, mention that the response is based on the documents provided by the user."
 ]))
+
 
 #### Document ####
 document_prompt = Template(
@@ -25,7 +26,8 @@ document_prompt = Template(
 
 #### Footer ####
 footer_prompt = Template("\n".join([
-    "Based only on the above documents, please generate an answer for the user.",
+    "Based only on the documents provided above, please generate a clear and concise answer for the user.",
+    "If the documents are similar, summarize key details rather than repeating them.",
     "## Question:",
     "$query",
     "",
