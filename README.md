@@ -75,33 +75,33 @@ Download the POSTMAN collection from [/assets/mini-rag-app.postman_collection.js
 
 Download Node.js from [Node.js](https://nodejs.org/en)
 
-## verify the installation
+### verify the installation
 
 ```bash
 $ node -v
 $ npm -v
 ```
 
-## Use npm (comes with Node.js) to install the required frontend dependencies:
+### Use npm (comes with Node.js) to install the required frontend dependencies:
 
 ```bash
 $ npm install axios @tailwindcss/typography
 ```
 
-## Install Tailwind CSS and its peer dependencies:
+### Install Tailwind CSS and its peer dependencies:
 
 ```bash
 $ npx tailwindcss init -p
 ```
 
-## Ensure src/index.css contains the following lines :
+### Ensure src/index.css contains the following lines :
 ```bash
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-## start React App : 
+### start React App : 
 
 ```bash
 $ npm start
